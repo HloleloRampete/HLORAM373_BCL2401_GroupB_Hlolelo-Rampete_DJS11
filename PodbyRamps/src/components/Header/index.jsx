@@ -4,6 +4,7 @@ import { Link } from "react-router-dom"
 export default function Header() {
     return (
     <div className="navbar">
+        <div className="gradient"></div>
         <div className="links">
             <Link to="/">Signup</Link>
             <Link to="/podcasts">Podcasts</Link>
