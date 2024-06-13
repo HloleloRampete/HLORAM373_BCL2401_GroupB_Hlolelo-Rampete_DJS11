@@ -1,5 +1,9 @@
+import Header from "../components/Header";
+
 export default function SignUpPage() {
-    return (
-        <div>SignUpPage</div>
-    )
+  return (
+    <div>
+      <Header />
+    </div>
+  );
 }
