@@ -23,7 +23,10 @@ input {
 
 .input-wrapper {
   width: 70vw;
-  display: block;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   margin: 0 auto;
   margin-top: 4rem;
 }
