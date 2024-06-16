@@ -1,12 +1,18 @@
 import { useState } from "react";
 import Header from "../components/Header";
 import InputComponent from "../components/Input";
+import Button from "../components/Button";
 
 export default function SignUpPage() {
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+
+  const handleSignup = () => {
+    // Implement your signup logic here
+  }
+
   return (
     <div>
       <Header />
@@ -41,6 +47,7 @@ export default function SignUpPage() {
           type="password"
           required={true}
         />
+        < Button text={"Signup"} onClick={handleSignup} />
       </div>
     </div>
   );
