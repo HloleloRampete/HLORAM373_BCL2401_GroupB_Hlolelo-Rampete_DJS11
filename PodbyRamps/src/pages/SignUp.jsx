@@ -8,7 +8,8 @@ export default function SignUpPage() {
     <div>
       <Header />
 
-      <div>
+      <div className="input-wrapper">
+        <h1>Signup</h1>
         <InputComponent
           state={fullName}
           setState={setFullName}
