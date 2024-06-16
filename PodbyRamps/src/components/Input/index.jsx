@@ -1,3 +1,5 @@
+import "./styles.css"
+
 export default function InputComponent({ type, state, setState, placeholder, required }) {
   return (
     <input
