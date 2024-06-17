@@ -20,7 +20,7 @@ export default function SignUpPage() {
           </p>
         ) : (
           <p style={{cursor: "pointer"}} onClick={() => setFlag(!flag)}>
-            Do not have an account? Click here to Signup.
+            Do not have an Account? Click here to Signup.
           </p>
         )}
       </div>
