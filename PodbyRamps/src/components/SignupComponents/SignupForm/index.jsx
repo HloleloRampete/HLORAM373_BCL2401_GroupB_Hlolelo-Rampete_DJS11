@@ -4,12 +4,17 @@ import Button from "../../CommonComponents/Button";
 import { auth, db } from "../../../firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore";
+import { useDispatch } from "react-redux";
+import { setUser } from "../../../slices/userSlice"
+import { useNavigate } from "react-router-dom";
 
 export default function SignupForm() {
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const navigate = useNavigate()
+  const dispatch = useDispatch();
 
   const handleSignup = async () => {
     // Implement your signup logic here
@@ -29,6 +34,18 @@ export default function SignupForm() {
           uid: user.uid,
           profilePic: fileURL,
         });
+
+        // Saving data in the redux by calling a redux action function
+        dispatch(
+          setUser({
+            name: fullName,
+            email: user.email,
+            uid: user.uid,
+            profilePic: fileURL,
+          })
+        );
+
+        navigate("/profile")
       } catch (e) {
         console.log("error", e);
       }
