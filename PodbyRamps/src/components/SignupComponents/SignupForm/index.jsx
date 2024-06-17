@@ -5,18 +5,21 @@ import { auth, db } from "../../../firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore";
 import { useDispatch } from "react-redux";
-import { setUser } from "../../../slices/userSlice"
+import { setUser } from "../../../slices/userSlice";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 export default function SignupForm() {
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const navigate = useNavigate()
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const handleSignup = async () => {
+    setLoading(true);
     // Implement your signup logic here
     if (password == confirmPassword && password.length >= 6) {
       try {
@@ -44,15 +47,22 @@ export default function SignupForm() {
             profilePic: fileURL,
           })
         );
-
-        navigate("/profile")
+        toast.success("User Has Been Created Successfully!");
+        setLoading(false);
+        navigate("/profile");
       } catch (e) {
         console.log("error", e);
+        toast.error(e.message)
       }
     } else {
-      alert(
-        "Password should be at least 6 characters and should match with confirm password"
-      );
+      if (password != confirmPassword) {
+        toast.error(
+          "Please Make Sure Your Password And Confirm Password Matches!"
+        );
+      } else if (password.length < 6) {
+        toast.error("Password Should Be At Least 6 Characters Long!");
+      }
+      setLoading(false);
     }
   };
 
