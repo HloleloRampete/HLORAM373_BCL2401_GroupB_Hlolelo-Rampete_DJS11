@@ -1,4 +1,6 @@
 import { useState } from "react"
+import InputComponent from "../../CommonComponents/Input/index"
+import Button from "../../CommonComponents/Button"
 
 export default function SignupForm() {
   const [fullName, setFullName] = useState("");
