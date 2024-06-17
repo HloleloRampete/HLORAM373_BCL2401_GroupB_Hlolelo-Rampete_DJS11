@@ -1,6 +1,11 @@
-import { useState } from "react"
-import InputComponent from "../../CommonComponents/Input/index"
-import Button from "../../CommonComponents/Button"
+import { useState } from "react";
+import InputComponent from "../../CommonComponents/Input/index";
+import Button from "../../CommonComponents/Button";
+import { auth, db, storage } from "../../../firebase";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
 
 export default function SignupForm() {
   const [fullName, setFullName] = useState("");
@@ -8,9 +13,23 @@ export default function SignupForm() {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
-
-  const handleSignup = () => {
+  const handleSignup = async () => {
     // Implement your signup logic here
+    if (password == confirmPassword && password.length >=6) {
+      try {
+        const userCredential = await createUserWithEmailAndPassword(
+          auth,
+          email,
+          password
+        );
+        const user = userCredential.user;
+      } catch (e) {
+        console.log("error", e);
+      }
+    } else {
+      alert("Password should be at least 6 characters and should match with confirm password");
+    }
+
   };
 
   return (
