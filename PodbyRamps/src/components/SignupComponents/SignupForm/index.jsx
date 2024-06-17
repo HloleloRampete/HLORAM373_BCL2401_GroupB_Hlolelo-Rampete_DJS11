@@ -52,7 +52,7 @@ export default function SignupForm() {
         navigate("/profile");
       } catch (e) {
         console.log("error", e);
-        toast.error(e.message)
+        toast.error(e.message);
       }
     } else {
       if (password != confirmPassword) {
@@ -96,7 +96,11 @@ export default function SignupForm() {
         type="password"
         required={true}
       />
-      <Button text={"Signup"} onClick={handleSignup} />
+      <Button
+        text={loading ? "Loading..." : "Signup"}
+        disabled={loading}
+        onClick={handleSignup}
+      />
     </>
   );
 }
