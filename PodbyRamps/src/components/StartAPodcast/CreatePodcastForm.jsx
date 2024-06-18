@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import InputComponent from "../CommonComponents/Input";
 import Button from "../CommonComponents/Button";
+import FileInput from "../CommonComponents/Input/FileInput";
 
 export default function CreatePodcastForm() {
   const [title, setTitle] = useState("");
@@ -34,13 +35,7 @@ export default function CreatePodcastForm() {
         type="text"
         required={true}
       />
-      <InputComponent
-        state={displayImage}
-        setState={setDisplayImage}
-        placeholder="Display Image"
-        type="file"
-        required={true}
-      />
+      <FileInput accept={"image/*"} id="banner-image-input" />
 
       <Button
         text={loading ? "Loading..." : "Create Podcast"}
