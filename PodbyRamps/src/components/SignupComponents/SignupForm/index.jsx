@@ -35,7 +35,6 @@ export default function SignupForm() {
           name: fullName,
           email: user.email,
           uid: user.uid,
-          profilePic: fileURL,
         });
 
         // Saving data in the redux by calling a redux action function
@@ -44,7 +43,6 @@ export default function SignupForm() {
             name: fullName,
             email: user.email,
             uid: user.uid,
-            profilePic: fileURL,
           })
         );
         toast.success("User Has Been Created Successfully!");

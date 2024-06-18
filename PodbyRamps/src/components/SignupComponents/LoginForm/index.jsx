@@ -35,7 +35,6 @@ export default function LoginForm() {
 
         dispatch(
           setUser({
-            name: userData.name,
             email: user.email,
             uid: user.uid,
           })
