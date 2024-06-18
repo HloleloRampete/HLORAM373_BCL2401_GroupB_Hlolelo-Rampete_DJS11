@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import InputComponent from "../CommonComponents/Input";
+import Button from "../CommonComponents/Button";
 
 export default function CreatePodcastForm() {
   const [title, setTitle] = useState("");
@@ -13,9 +14,13 @@ export default function CreatePodcastForm() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
+  const handleSubmit = () => {
+    console.log("")
+  }
+
   return (
-  <div>
-    <InputComponent
+    <div>
+      <InputComponent
         state={title}
         setState={setTitle}
         placeholder="Title"
@@ -28,7 +33,20 @@ export default function CreatePodcastForm() {
         placeholder="Description"
         type="text"
         required={true}
-        />
-  </div>
-);
+      />
+      <InputComponent
+        state={displayImage}
+        setState={setDisplayImage}
+        placeholder="Display Image"
+        type="file"
+        required={true}
+      />
+
+      <Button
+        text={loading ? "Loading..." : "Create Podcast"}
+        disabled={loading}
+        onClick={handleSubmit}
+      />
+    </div>
+  );
 }
