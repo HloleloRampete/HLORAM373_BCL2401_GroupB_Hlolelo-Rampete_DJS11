@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import InputComponent from "../CommonComponents/Input";
 import Button from "../CommonComponents/Button";
 import FileInput from "../CommonComponents/Input/FileInput";
+import { toast } from "react-toastify";
 
 export default function CreatePodcastForm() {
   const [title, setTitle] = useState("");
@@ -16,8 +17,16 @@ export default function CreatePodcastForm() {
   const dispatch = useDispatch();
 
   const handleSubmit = () => {
-    console.log("")
-  }
+    toast.success("Podcast Has Been Uploaded!");
+  };
+
+  const displayImageHandle = (file) => {
+    setDisplayImage(file);
+  };
+
+  const bannerImageHandle = (file) => {
+    setBannerImage(file);
+  };
 
   return (
     <div>
@@ -35,7 +44,16 @@ export default function CreatePodcastForm() {
         type="text"
         required={true}
       />
-      <FileInput accept={"image/*"} id="banner-image-input" />
+      <FileInput
+        accept={"image/*"}
+        id="display-image-input"
+        fileHandleFnc={displayImageHandle}
+      />
+      <FileInput
+        accept={"image/*"}
+        id="banner-image-input"
+        fileHandleFnc={bannerImageHandle}
+      />
 
       <Button
         text={loading ? "Loading..." : "Create Podcast"}
