@@ -21,7 +21,12 @@ export default function SignupForm() {
   const handleSignup = async () => {
     setLoading(true);
     // Implement your signup logic here
-    if (password == confirmPassword && password.length >= 6) {
+    if (
+      password == confirmPassword &&
+      password.length >= 6 &&
+      fullName &&
+      email
+    ) {
       try {
         // creating user's account
         const userCredential = await createUserWithEmailAndPassword(
@@ -51,6 +56,7 @@ export default function SignupForm() {
       } catch (e) {
         console.log("error", e);
         toast.error(e.message);
+        setLoading(false);
       }
     } else {
       if (password != confirmPassword) {
