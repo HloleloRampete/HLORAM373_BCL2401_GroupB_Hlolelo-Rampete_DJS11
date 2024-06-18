@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
 import SignUpPage from "./pages/SignUpPage";
 import Profile from "./pages/Profile";
+import CreateAPodcast from "./pages/CreateAPodcast"
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useEffect } from "react";
@@ -55,6 +56,7 @@ export default function App() {
           <Route path="/" element={<SignUpPage />} />
           <Route element={<PrivateRoutes />}>
             <Route path="/profile" element={<Profile />} />
+            <Route path="/create-a-podcast" element={<CreateAPodcast />} />
           </Route>
         </Routes>
       </Router>
