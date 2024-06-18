@@ -1,10 +1,13 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import InputComponent from "../CommonComponents/Input";
-import Button from "../CommonComponents/Button";
-import FileInput from "../CommonComponents/Input/FileInput";
 import { toast } from "react-toastify";
+import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
+import { auth, db, storage } from "../../firebase";
+import { addDoc, collection, doc, setDoc } from "firebase/firestore";
+import InputComponent from "../CommonComponents/Input";
+import FileInput from "../CommonComponents/Input/FileInput";
+import Button from "../CommonComponents/Button";
 
 export default function CreatePodcastForm() {
   const [title, setTitle] = useState("");
@@ -16,8 +19,53 @@ export default function CreatePodcastForm() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const handleSubmit = () => {
-    toast.success("Podcast Has Been Uploaded!");
+  const handleSubmit = async () => {
+    if (title && desc && displayImage && bannerImage) {
+      setLoading(true);
+      // 1. Upload files -> get downloadable links
+      try {
+        const bannerImageRef = ref(
+          storage,
+          `podcasts/${auth.currentUser.uid}/${Date.now()}`
+        );
+        await uploadBytes(bannerImageRef, bannerImage);
+
+        const bannerImageUrl = await getDownloadURL(bannerImageRef);
+
+        const displayImageRef = ref(
+          storage,
+          `podcasts/${auth.currentUser.uid}/${Date.now()}`
+        );
+        await uploadBytes(displayImageRef, displayImage);
+
+        const displayImageUrl = await getDownloadURL(displayImageRef);
+        const podcastData = {
+          title: title,
+          description: desc,
+          bannerImage: bannerImageUrl,
+          displayImage: displayImageUrl,
+          createdBy: auth.currentUser.uid,
+        };
+
+        const docRef = await addDoc(collection(db, "podcasts"), podcastData);
+        setTitle("");
+        setDesc("");
+        setBannerImage(null);
+        setDisplayImage(null);
+        toast.success("Podcast Created!");
+        setLoading(false);
+      } catch (e) {
+        toast.error(e.message);
+        console.log(e);
+        setLoading(false);
+      }
+
+      // 2. create a new doc iin a new collection called podcasts
+      // 3. save this new podcast episodes states in our podcasts
+    } else {
+      toast.error("Please Enter All Values");
+      setLoading(false);
+    }
   };
 
   const displayImageHandle = (file) => {
@@ -29,7 +77,7 @@ export default function CreatePodcastForm() {
   };
 
   return (
-    <div>
+    <>
       <InputComponent
         state={title}
         setState={setTitle}
@@ -50,6 +98,7 @@ export default function CreatePodcastForm() {
         fileHandleFnc={displayImageHandle}
         text={"Display Image Upload"}
       />
+
       <FileInput
         accept={"image/*"}
         id="banner-image-input"
@@ -62,6 +111,8 @@ export default function CreatePodcastForm() {
         disabled={loading}
         onClick={handleSubmit}
       />
-    </div>
+    </>
   );
 }
+
+
