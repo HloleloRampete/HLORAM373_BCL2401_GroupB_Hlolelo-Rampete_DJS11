@@ -48,11 +48,13 @@ export default function CreatePodcastForm() {
         accept={"image/*"}
         id="display-image-input"
         fileHandleFnc={displayImageHandle}
+        text={"Display Image Upload"}
       />
       <FileInput
         accept={"image/*"}
         id="banner-image-input"
         fileHandleFnc={bannerImageHandle}
+        text={"Banner Image Upload"}
       />
 
       <Button
