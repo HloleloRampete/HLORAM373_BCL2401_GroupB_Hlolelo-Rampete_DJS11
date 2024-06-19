@@ -16,21 +16,23 @@ export default function Profile() {
     signOut(auth)
       .then(() => {
         console.log("Logged out successfully");
-        toast.success("You Have Successfully Logged Out!")
+        toast.success("You Have Successfully Logged Out!");
       })
       .catch((error) => {
         console.log("Error logging out", error);
-        toast.error(error.message)
+        toast.error(error.message);
       });
   };
 
   return (
     <div>
       <Header />
-      <h1>{user.name}</h1>
-      <h1>{user.email}</h1>
-      <h1>{user.uid}</h1>
-      <Button text={"Logout"} onClick={handleLogout} />
+      <div className="input-wrapper">
+        <h1>{user.name}</h1>
+        <h1>{user.email}</h1>
+        <h1>{user.uid}</h1>
+        <Button text={"Logout"} onClick={handleLogout} />
+      </div>
     </div>
   );
 }
