@@ -1,0 +1,11 @@
+.podcast-card {
+  width: 250px;
+  height: 250px;
+  background: linear-gradient(
+    177.7deg,
+    rgba(58, 129, 199, 0.3) 1.63%,
+    rgba(65, 48, 90, 0.009) 148.18%
+  );
+  border-radius: 2rem;
+  padding: 0.5rem;
+}
