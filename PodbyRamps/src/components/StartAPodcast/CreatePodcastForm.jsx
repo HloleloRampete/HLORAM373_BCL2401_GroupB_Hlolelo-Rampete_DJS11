@@ -46,7 +46,7 @@ export default function CreatePodcastForm() {
           displayImage: displayImageUrl,
           createdBy: auth.currentUser.uid,
         };
-
+        toast.success("Handling Form")
         const docRef = await addDoc(collection(db, "podcasts"), podcastData);
         setTitle("");
         setDesc("");
