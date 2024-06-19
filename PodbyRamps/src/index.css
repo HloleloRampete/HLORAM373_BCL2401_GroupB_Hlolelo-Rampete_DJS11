@@ -21,6 +21,10 @@ input {
   font-size: "Inter", sans-serif;
 }
 
+a {
+  text-decoration: none;
+}
+
 .input-wrapper {
   width: 70vw;
   display: flex;
@@ -43,5 +47,5 @@ input {
   flex-wrap: wrap;
   align-items: center;
   gap: 1rem;
-  
+
 }
