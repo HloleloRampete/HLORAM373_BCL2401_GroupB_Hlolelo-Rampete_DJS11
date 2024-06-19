@@ -5,7 +5,7 @@ export default function PodcastsCard({ id, title, displayImage }) {
     <Link to={`/podcast/${id}`}>
       <div className="podcast-card">
         <img src={displayImage} alt={title} className="podcast-image" />
-        <p>{title}</p>
+        <p className="podcast-title">{title}</p>
       </div>
     </Link>
   );
