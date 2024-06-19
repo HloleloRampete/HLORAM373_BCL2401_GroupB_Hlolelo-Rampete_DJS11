@@ -34,11 +34,11 @@ export default function PodcastsPage() {
       <div className="input-wrapper" style={{ marginTop: "2rem" }}>
         <h1>Discover Podcasts</h1>
         {podcasts.length > 0 ? (
-          <>
+          <div className="podcasts-layout">
             {podcasts.map((item) => {
               return (<p>{item.title}</p>);
             })}
-          </>
+          </div>
         ) : (
           <p>No Podcasts Found</p>
         )}

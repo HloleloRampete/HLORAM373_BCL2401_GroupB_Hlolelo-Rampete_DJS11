@@ -36,3 +36,12 @@ input {
   text-align: center;
   font-weight: 500;
 }
+
+.podcasts-layout {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+  
+}
