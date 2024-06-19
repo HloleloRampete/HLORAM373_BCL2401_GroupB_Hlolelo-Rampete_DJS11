@@ -3,6 +3,8 @@ import Header from "../components/CommonComponents/Header/index";
 import { collection, onSnapshot, query } from "firebase/firestore";
 import { db } from "../firebase";
 import { useDispatch, useSelector } from "react-redux";
+import PodcastsCard from "../components/Podcasts/PodcastCard";
+import { setPodcasts } from "../slices/podcastSlice"
 
 export default function PodcastsPage() {
   const dispatch = useDispatch();
@@ -36,7 +38,14 @@ export default function PodcastsPage() {
         {podcasts.length > 0 ? (
           <div className="podcasts-layout">
             {podcasts.map((item) => {
-              return (<p>{item.title}</p>);
+              return (
+                <PodcastsCard
+                  key={item.id}
+                  id={item.id}
+                  title={item.title}
+                  displayImage={item.displayImage}
+                />
+              );
             })}
           </div>
         ) : (
