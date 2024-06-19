@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Header from "../components/CommonComponents/Header/index";
 import { collection, onSnapshot, query } from "firebase/firestore";
 import { db } from "../firebase";
@@ -9,6 +9,7 @@ import { setPodcasts } from "../slices/podcastSlice"
 export default function PodcastsPage() {
   const dispatch = useDispatch();
   const podcasts = useSelector((state) => state.podcasts.podcasts);
+    const [search, setSearch] = useState("")
 
   useEffect(() => {
     const unsubscribe = onSnapshot(
@@ -29,6 +30,9 @@ export default function PodcastsPage() {
       unsubscribe();
     };
   }, [dispatch]);
+
+  console.log(podcasts)
+  let filteredPodcasts = podcasts.filter((item) => item.title.toLowerCase().includes(search.toLowerCase))
 
   return (
     <div>
