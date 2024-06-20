@@ -1,4 +1,5 @@
 import Button from "../CommonComponents/Button";
+import PropTypes from 'prop-types';
 
 export default function EpisodeDetails({ index, title, description, audioFile, onClick }) {
     
@@ -18,6 +19,13 @@ export default function EpisodeDetails({ index, title, description, audioFile, o
         />
       </div>
     );
+  }
+  EpisodeDetails.propTypes = {
+    index: PropTypes.number.isRequired,
+    title: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    audioFile: PropTypes.string.isRequired,
+    onClick: PropTypes.func.isRequired,
   }
 
   // still to add audio
