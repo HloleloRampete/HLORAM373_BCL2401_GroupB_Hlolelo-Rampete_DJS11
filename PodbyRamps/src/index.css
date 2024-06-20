@@ -49,3 +49,31 @@ a {
   gap: 1.5rem;
 
 }
+
+.banner-wrapper img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.podcast-description {
+  margin-top: 1rem;
+  font-size: 1.2rem;
+}
+
+.podcast-title-heading {
+  font-size: 2rem;
+  margin: 1rem 0;
+}
+
+.episode-list {
+  margin-top: 1rem;
+}
+
+.episode-item {
+  margin: 1rem 0;
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  text-align: left;
+}
