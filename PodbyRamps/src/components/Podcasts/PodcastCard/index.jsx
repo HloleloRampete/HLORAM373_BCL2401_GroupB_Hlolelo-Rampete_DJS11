@@ -11,7 +11,7 @@ export default function PodcastsCard(item) {
           alt={item.title}
           className="podcast-image"
         />
-        <p className="podcast-title">{item.title}</p>
+        <h4 className="podcast-title">{item.title}</h4>
       </div>
     </Link>
   );

@@ -13,6 +13,7 @@ import { setUser } from "./slices/userSlice";
 import { useDispatch } from "react-redux";
 import PrivateRoutes from "./components/CommonComponents/PrivateRoutes";
 import PodcastsPage from "./pages/Podcasts";
+import PodcastDetailsPage from "./pages/PodcastDetails";
 
 export default function App() {
   const dispatch = useDispatch();
@@ -48,7 +49,8 @@ export default function App() {
     return () => {
       unsubscribeAuth();
     };
-  }, []);
+  }, [dispatch]);
+
   return (
     <div className="App">
       <ToastContainer />
@@ -59,6 +61,7 @@ export default function App() {
             <Route path="/profile" element={<Profile />} />
             <Route path="/create-a-podcast" element={<CreateAPodcast />} />
             <Route path="/podcasts" element={<PodcastsPage />} />
+            <Route path="/podcast/:id" element={<PodcastDetailsPage />} />
           </Route>
         </Routes>
       </Router>
