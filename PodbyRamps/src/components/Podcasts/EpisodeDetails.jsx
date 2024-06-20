@@ -1,6 +1,7 @@
 import Button from "../CommonComponents/Button";
 
 export default function EpisodeDetails({ index, title, description, audioFile, onClick }) {
+    
     return (
     
       <div style={{ width: "100%" }}>

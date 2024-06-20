@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 import Button from "../components/CommonComponents/Button";
 import { auth } from "../firebase";
 import EpisodeDetails from "../components/Podcasts/EpisodeDetails";
-// import AudioPlayer from "../components/Podcasts/AudioPlayer";
+import AudioPlayer from "../components/Podcasts/AudioPlayer";
 
 export default function PodcastDetailsPage() {
   const { id } = useParams();
@@ -98,9 +98,9 @@ export default function PodcastDetailsPage() {
           </>
         )}
       </div>
-      {/* {playingFile && (
+      {playingFile && (
         <AudioPlayer audioSrc={playingFile} image={podcast.displayImage} />
-      )} */}
+      )}
     </div>
   );
 }
