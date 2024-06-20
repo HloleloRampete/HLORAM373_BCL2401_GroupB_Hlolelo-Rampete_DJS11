@@ -1,11 +1,17 @@
 import { Link } from "react-router-dom";
+
 import "./styles.css";
-export default function PodcastsCard({ id, title, displayImage }) {
+export default function PodcastsCard(item) {
+    // console.log(item.genre)
   return (
-    <Link to={`/podcast/${id}`}>
+    <Link data={item} to={`/podcast/${item.id}`}>
       <div className="podcast-card">
-        <img src={displayImage} alt={title} className="podcast-image" />
-        <p className="podcast-title">{title}</p>
+        <img
+          src={item.displayImage}
+          alt={item.title}
+          className="podcast-image"
+        />
+        <p className="podcast-title">{item.title}</p>
       </div>
     </Link>
   );
