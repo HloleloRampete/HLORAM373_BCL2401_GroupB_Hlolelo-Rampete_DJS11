@@ -21,8 +21,6 @@ export default function Profile() {
           id: item.id,
           title: item.title,
           displayImage: item.displayImage,
-          // genre: genreMap[item.genres], // Map genre ID to title
-          // genreId: item.genre, // keep genre ID for filtering
         }));
   
         setPodcasts(podcastsData);
