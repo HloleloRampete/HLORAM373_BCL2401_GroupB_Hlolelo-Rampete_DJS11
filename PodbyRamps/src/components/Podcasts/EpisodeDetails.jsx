@@ -6,6 +6,7 @@ import { addFavorite, removeFavorite } from "../../slices/favouriteSlice";
 export default function EpisodeDetails({ index, title, description, audioFile, onClick, episodeId }) {
     const dispatch = useDispatch();
     const favorites = useSelector((state) => state.favorites.episodes);
+    
   
     const isFavorite = favorites.some((episode) => episode.id === episodeId);
   

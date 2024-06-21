@@ -12,6 +12,7 @@ export default function PodcastsCard(item) {
           className="podcast-image"
         />
         <h4 className="podcast-title">{item.title}</h4>
+        <h5 className="podcast-para">Last Update: {new Date(item.updated).toLocaleDateString()}</h5>
       </div>
     </Link>
   );

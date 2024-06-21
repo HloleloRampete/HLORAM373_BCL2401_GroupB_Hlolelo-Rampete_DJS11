@@ -20,7 +20,7 @@ export default function Profile() {
           key: item.id,
           id: item.id,
           title: item.title,
-          displayImage: item.image,
+          displayImage: item.displayImage,
           // genre: genreMap[item.genres], // Map genre ID to title
           // genreId: item.genre, // keep genre ID for filtering
         }));

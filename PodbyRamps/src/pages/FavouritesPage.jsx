@@ -18,7 +18,7 @@ export default function FavoriteEpisodesPage() {
                   index={index + 1}
                   title={episode.title}
                   description={episode.description}
-                  audioFile={episode.audioFile}
+                  audioFile={episode.file}
                   episodeId={episode.id}
                   onClick={() => {}}
                 />
