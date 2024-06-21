@@ -14,6 +14,9 @@ export default function Header() {
         <Link to="/podcasts" className={currentPath == "/podcasts" ? "active" : ""}>
           Podcasts
         </Link>
+        <Link to="/favourites" className={currentPath == "/favourites" ? "active" : ""}>
+          Favourites
+        </Link>
         <Link
           to="/create-a-podcast"
           className={currentPath == "/create-a-podcast" ? "active" : ""}
