@@ -20,11 +20,12 @@ export default function PodcastsPage() {
   const [podcasts, setPodcasts] = useState([]);
   const [search, setSearch] = useState("");
   const [selectedGenre, setSelectedGenre] = useState("");
+  const [sortOrder, setSortOrder] = useState("A-Z");
 
   useEffect(() => {
     const fetchPodcasts = async () => {
       try {
-        const response = await fetch("https://podcast-api.netlify.app");
+        const response = await fetch("https://podcast-api.netlify.app/");
         const data = await response.json();
         const podcastsData = data.map((item) => ({
           key: item.id,
@@ -34,6 +35,7 @@ export default function PodcastsPage() {
           genre: genreMap[item.genres], // Map genre ID to title
           genreId: item.genre, // keep genre ID for filtering
           updated: item.updated,
+          season: item.season,
         }));
         console.log(data);
         setPodcasts(podcastsData);
@@ -53,6 +55,17 @@ export default function PodcastsPage() {
       (selectedGenre ? item.genre === selectedGenre : true)
   );
 
+  // Sort filtered podcasts based on the selected sort order
+  if (sortOrder === "A-Z") {
+    filteredPodcasts.sort((a, b) => a.title.localeCompare(b.title));
+  } else if (sortOrder === "Z-A") {
+    filteredPodcasts.sort((a, b) => b.title.localeCompare(a.title));
+  }
+
+  const handleSortChange = (e) => {
+    setSortOrder(e.target.value);
+  };
+
   return (
     <div>
       <Header />
@@ -63,6 +76,8 @@ export default function PodcastsPage() {
           setState={setSearch}
           placeholder="Search By Title"
           type="text"
+          sortOrder={sortOrder}
+          handleSortChange={handleSortChange}
         />
 
         <div style={{ marginTop: "1rem" }}>
@@ -90,6 +105,8 @@ export default function PodcastsPage() {
                   title={item.title}
                   displayImage={item.displayImage}
                   updated={item.updated}
+                  genre={item.genre}
+                  season={item.season}
                 />
               );
             })}

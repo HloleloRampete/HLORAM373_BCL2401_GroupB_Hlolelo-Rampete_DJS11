@@ -10,11 +10,11 @@ import CarouselComponent from "../components/Carousel/CarouselComponent";
 export default function Profile() {
   const user = useSelector((state) => state.user.user);
   const [podcasts, setPodcasts] = useState([]);
-  
+
   useEffect(() => {
     const fetchPodcasts = async () => {
       try {
-        const response = await fetch("https://podcast-api.netlify.app");
+        const response = await fetch("https://podcast-api.netlify.app/id");
         const data = await response.json();
         const podcastsData = data.map((item) => ({
           key: item.id,
@@ -30,10 +30,9 @@ export default function Profile() {
         console.error("Error fetching podcasts:", error);
       }
     };
-    console.log(fetchPodcasts())
+    console.log(fetchPodcasts());
     fetchPodcasts();
   }, []);
- 
 
   const handleLogout = () => {
     signOut(auth)
@@ -60,7 +59,12 @@ export default function Profile() {
         <h1>{user.uid}</h1>
         <Button text={"Logout"} onClick={handleLogout} />
         <h2>Recently Updated Podcasts</h2>
-        <CarouselComponent items={podcasts} />
+        <CarouselComponent
+          key={item.id}
+          id={item.id}
+          title={item.title}
+          displayImage={item.displayImage}
+        />
       </div>
     </div>
   );
