@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import "./styles.css";
 
 export default function InputComponent({
@@ -30,3 +31,18 @@ export default function InputComponent({
     </div>
   );
 }
+
+InputComponent.propTypes = {
+  type: PropTypes.string.isRequired,
+  state: PropTypes.string.isRequired,
+  setState: PropTypes.func.isRequired,
+  placeholder: PropTypes.string,
+  required: PropTypes.bool,
+  sortOrder: PropTypes.string.isRequired,
+  handleSortChange: PropTypes.func.isRequired,
+};
+
+InputComponent.defaultProps = {
+  placeholder: "",
+  required: false,
+};
