@@ -74,8 +74,7 @@ export default function PodcastsPage() {
           setState={setSearch}
           placeholder="Search By Title"
           type="text"
-          sortOrder={sortOrder}
-          handleSortChange={handleSortChange}
+      
         />
 
         <div style={{ marginTop: "1rem" }}>

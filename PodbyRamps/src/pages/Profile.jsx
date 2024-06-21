@@ -56,10 +56,6 @@ export default function Profile() {
         <Button text={"Logout"} onClick={handleLogout} />
         <h2>Recently Updated Podcasts</h2>
         <CarouselComponent
-          key={item.id}
-          id={item.id}
-          title={item.title}
-          displayImage={item.displayImage}
         />
       </div>
     </div>
