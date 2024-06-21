@@ -2,8 +2,6 @@ import { useEffect, useState } from "react";
 import Header from "../components/CommonComponents/Header";
 import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
-import Button from "../components/CommonComponents/Button";
-import { auth } from "../firebase";
 import EpisodeDetails from "../components/Podcasts/EpisodeDetails";
 import AudioPlayer from "../components/Podcasts/AudioPlayer";
 
@@ -23,11 +21,9 @@ export default function PodcastDetailsPage() {
           const data = await response.json();
 
           if (data) {
-            console.log("Fetched Podcast Data:", data);
             setPodcast(data);
             setSeasons(data.seasons);
           } else {
-            console.log("No such Podcast!");
             toast.error("No such Podcast!");
             navigate("/podcasts");
           }

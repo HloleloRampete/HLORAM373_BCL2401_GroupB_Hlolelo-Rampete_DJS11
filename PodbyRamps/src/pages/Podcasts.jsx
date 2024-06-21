@@ -37,7 +37,6 @@ export default function PodcastsPage() {
           updated: item.updated,
           season: item.season,
         }));
-        console.log(data);
         setPodcasts(podcastsData);
       } catch (error) {
         console.error("Error fetching podcasts:", error);
@@ -47,7 +46,6 @@ export default function PodcastsPage() {
     fetchPodcasts();
   }, []);
 
-  console.log(podcasts);
 
   let filteredPodcasts = podcasts.filter(
     (item) =>

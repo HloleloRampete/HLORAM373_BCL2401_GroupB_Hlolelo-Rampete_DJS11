@@ -24,24 +24,22 @@ export default function Profile() {
           // genre: genreMap[item.genres], // Map genre ID to title
           // genreId: item.genre, // keep genre ID for filtering
         }));
-        console.log(data);
+  
         setPodcasts(podcastsData);
       } catch (error) {
         console.error("Error fetching podcasts:", error);
       }
     };
-    console.log(fetchPodcasts());
     fetchPodcasts();
   }, []);
 
   const handleLogout = () => {
     signOut(auth)
       .then(() => {
-        console.log("Logged out successfully");
         toast.success("You Have Successfully Logged Out!");
       })
       .catch((error) => {
-        console.log("Error logging out", error);
+   
         toast.error(error.message);
       });
   };

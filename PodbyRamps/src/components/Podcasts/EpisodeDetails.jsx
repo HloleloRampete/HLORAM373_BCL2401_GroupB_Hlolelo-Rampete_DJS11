@@ -39,4 +39,4 @@ export default function EpisodeDetails({ index, title, description, audioFile, o
     onClick: PropTypes.func.isRequired,
   }
 
-  // still to add audio
+  
